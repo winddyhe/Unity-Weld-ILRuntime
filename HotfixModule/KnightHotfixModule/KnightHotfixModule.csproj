@@ -260,6 +260,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Test\UnityWeld\UnityWeldTestCase1.cs" />
     <Compile Include="WindHotfix\Core\Assist\HotfixBinding.cs" />
     <Compile Include="WindHotfix\Core\Assist\HotfixTypeExpand.cs" />
     <Compile Include="WindHotfix\Core\Serializer\HotfixSerializer.Assists.cs" />
@@ -294,9 +295,7 @@
     <Compile Include="WindHotfix\GUI\ViewController.cs" />
     <Compile Include="WindHotfix\GUI\ViewManager.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Test\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>

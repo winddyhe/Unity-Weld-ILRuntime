@@ -11,7 +11,7 @@ namespace UnityWeld.Binding.Internal
     /// <summary>
     /// Helper class for setting up the factory for use in the editor.
     /// </summary>
-    public static class TypeResolver
+    public static partial class TypeResolver
     {
         private static Type[] typesWithBindingAttribute;
 

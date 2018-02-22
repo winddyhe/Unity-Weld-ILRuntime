@@ -14,6 +14,10 @@ namespace Framework.Hotfix
     [UnityWeld.Binding.Binding]
     public class HotfixMBContainer : MonoBehaviour
     {
+        public string text;
+        [UnityWeld.Binding.Binding]
+        public string Text { get { return text; } set { text = value; } }
+        
         [HideInInspector][SerializeField]
         protected string                    mHotfixName;
         [HideInInspector][SerializeField]
