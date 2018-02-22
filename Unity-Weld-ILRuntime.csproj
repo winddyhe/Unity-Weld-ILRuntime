@@ -12,15 +12,12 @@
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.3.0p2</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>6</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
@@ -365,7 +362,6 @@
     <Compile Include="Assets\Framework\Loader\SceneConfig.cs" />
     <Compile Include="Assets\Framework\Loading\GameLoading.cs" />
     <Compile Include="Assets\Framework\Loading\ILoadingView.cs" />
-    <Compile Include="Assets\Framework\UnityWeld\ILRTWeldContainer.cs" />
     <Compile Include="Assets\Framework\Utility\DontDestroyOnLoad.cs" />
     <Compile Include="Assets\Framework\Utility\GameFlowLevelManager.cs" />
     <Compile Include="Assets\Framework\Utility\MainAssemblyExpand.cs" />
@@ -380,6 +376,72 @@
     <Compile Include="Assets\Generate\SerializerBinary\Runtime\UnityEngine.AssetBundles.ABVersion.Binary.cs" />
     <Compile Include="Assets\Generate\SerializerBinary\Runtime\UnityEngine.AssetBundles.ABVersionEntry.Binary.cs" />
     <Compile Include="Assets\Test\UnityWeldILRuntime\1_One_way_property_binding_to_a_text_field\MyViewModel1.cs" />
+    <Compile Include="Assets\UnityWeld\AOTOptimisationHelper.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\AbstractMemberBinding.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\AbstractTemplateSelector.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\AdapterAttribute.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\AdapterOptions.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Adapters\BoolInversionAdapter.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Adapters\BoolToColorAdapter.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Adapters\BoolToColorAdapterOptions.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Adapters\BoolToColorBlockAdapter.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Adapters\BoolToColorBlockAdapterOptions.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Adapters\BoolToStringAdapter.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Adapters\BoolToStringAdapterOptions.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Adapters\ColorToColorBlockAdapter.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Adapters\ColorToColorBlockAdapterOptions.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Adapters\DateTimeToFloatAdapter.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Adapters\DateTimeToStringAdapter.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Adapters\DateTimeToStringAdapterOptions.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Adapters\FloatToDateTimeAdapter.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Adapters\FloatToStringAdapter.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Adapters\FloatToStringAdapterOptions.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Adapters\IntToStringAdapter.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Adapters\StringCultureToDateTimeAdapter.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Adapters\StringCultureToDateTimeAdapterOptions.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Adapters\StringToFloatAdapter.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Adapters\StringToIntAdapter.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\AnimatorParameterBinding.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\AnimatorParameterTrigger.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\BindingAttribute.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\BoundObservableList.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\CollectionBinding.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\DropdownBinding.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\EventBinding.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Exceptions\AmbiguousTypeException.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Exceptions\ComponentNotFoundException.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Exceptions\InvalidAdapterException.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Exceptions\InvalidEndPointException.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Exceptions\InvalidEventException.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Exceptions\InvalidTypeException.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Exceptions\MemberNotFoundException.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Exceptions\NoSuchAdapterException.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Exceptions\PropertyNullException.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Exceptions\TemplateNotFoundException.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Exceptions\ViewModelNotFoundException.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\IAdapter.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\IMemberBinding.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\INotifyCollectionChanged.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Internal\BindableMember.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Internal\PropertyEndPoint.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Internal\PropertyFinder.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Internal\PropertySync.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Internal\PropertyWatcher.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Internal\TypeResolver.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Internal\UnityEventBinder.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Internal\UnityEventWatcher.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\ITypedList.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\IViewModelProvider.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\NotifyCollectionChangedEventArgs.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\ObservableList.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\OneWayPropertyBinding.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\SubViewModelBinding.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\Template.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\TemplateBinding.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\ToggleActiveBinding.cs" />
+    <Compile Include="Assets\UnityWeld\Binding\TwoWayPropertyBinding.cs" />
+    <Compile Include="Assets\UnityWeld\Hotfix\ILRTWeldContainer.cs" />
+    <Compile Include="Assets\UnityWeld\Widgets\DropdownAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Framework\Graphics\Shaders\Diffuse\ColorBlend.cginc" />
@@ -410,7 +472,6 @@
     <None Include="Assets\Framework\Graphics\Shaders\UI\Text3DUI.shader" />
     <None Include="Assets\Framework\Graphics\Shaders\UI\ThreeDUI.cginc" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
 </Project>

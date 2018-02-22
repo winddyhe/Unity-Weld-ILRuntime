@@ -12,15 +12,12 @@
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Editor:5</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.3.0p2</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>6</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
@@ -464,18 +461,18 @@
     <Compile Include="Assets\Editor\Serializer\CodeGenerator.CommonSerializer.cs" />
     <Compile Include="Assets\Editor\Serializer\CodeGenerator.cs" />
     <Compile Include="Assets\Editor\Serializer\SerializerBinary.Editor.cs" />
-    <Compile Include="Assets\Editor\UnityWeld\AnimatorParameterBindingEditor.cs" />
-    <Compile Include="Assets\Editor\UnityWeld\BaseBindingEditor.cs" />
-    <Compile Include="Assets\Editor\UnityWeld\CollectionBindingEditor.cs" />
-    <Compile Include="Assets\Editor\UnityWeld\EventBindingEditor.cs" />
-    <Compile Include="Assets\Editor\UnityWeld\InspectorUtils.cs" />
-    <Compile Include="Assets\Editor\UnityWeld\OneWayPropertyBindingEditor.cs" />
-    <Compile Include="Assets\Editor\UnityWeld\SubViewModelBindingEditor.cs" />
-    <Compile Include="Assets\Editor\UnityWeld\TemplateBindingEditor.cs" />
-    <Compile Include="Assets\Editor\UnityWeld\TemplateEditor.cs" />
-    <Compile Include="Assets\Editor\UnityWeld\ToggleActiveBindingEditor.cs" />
-    <Compile Include="Assets\Editor\UnityWeld\TwoWayPropertyBindingEditor.cs" />
-    <Compile Include="Assets\Framework\UnityWeld\Editor\ILRTWeldContainerEditor.cs" />
+    <Compile Include="Assets\UnityWeld\Editor\AnimatorParameterBindingEditor.cs" />
+    <Compile Include="Assets\UnityWeld\Editor\BaseBindingEditor.cs" />
+    <Compile Include="Assets\UnityWeld\Editor\CollectionBindingEditor.cs" />
+    <Compile Include="Assets\UnityWeld\Editor\EventBindingEditor.cs" />
+    <Compile Include="Assets\UnityWeld\Editor\InspectorUtils.cs" />
+    <Compile Include="Assets\UnityWeld\Editor\OneWayPropertyBindingEditor.cs" />
+    <Compile Include="Assets\UnityWeld\Editor\SubViewModelBindingEditor.cs" />
+    <Compile Include="Assets\UnityWeld\Editor\TemplateBindingEditor.cs" />
+    <Compile Include="Assets\UnityWeld\Editor\TemplateEditor.cs" />
+    <Compile Include="Assets\UnityWeld\Editor\ToggleActiveBindingEditor.cs" />
+    <Compile Include="Assets\UnityWeld\Editor\TwoWayPropertyBindingEditor.cs" />
+    <Compile Include="Assets\UnityWeld\Hotfix\Editor\ILRTWeldContainerEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Framework\Graphics\Shaders\Diffuse\ColorBlend.cginc" />
