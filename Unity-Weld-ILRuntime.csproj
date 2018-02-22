@@ -12,12 +12,15 @@
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
-    <TargetFrameworkProfile></TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.3.0p2</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>6</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
@@ -362,6 +365,7 @@
     <Compile Include="Assets\Framework\Loader\SceneConfig.cs" />
     <Compile Include="Assets\Framework\Loading\GameLoading.cs" />
     <Compile Include="Assets\Framework\Loading\ILoadingView.cs" />
+    <Compile Include="Assets\Framework\UnityWeld\ILRTWeldContainer.cs" />
     <Compile Include="Assets\Framework\Utility\DontDestroyOnLoad.cs" />
     <Compile Include="Assets\Framework\Utility\GameFlowLevelManager.cs" />
     <Compile Include="Assets\Framework\Utility\MainAssemblyExpand.cs" />
@@ -375,6 +379,7 @@
     <Compile Include="Assets\Generate\SerializerBinary\Runtime\CommonSerializer.cs" />
     <Compile Include="Assets\Generate\SerializerBinary\Runtime\UnityEngine.AssetBundles.ABVersion.Binary.cs" />
     <Compile Include="Assets\Generate\SerializerBinary\Runtime\UnityEngine.AssetBundles.ABVersionEntry.Binary.cs" />
+    <Compile Include="Assets\Test\UnityWeldILRuntime\1_One_way_property_binding_to_a_text_field\MyViewModel1.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Framework\Graphics\Shaders\Diffuse\ColorBlend.cginc" />
@@ -405,6 +410,7 @@
     <None Include="Assets\Framework\Graphics\Shaders\UI\Text3DUI.shader" />
     <None Include="Assets\Framework\Graphics\Shaders\UI\ThreeDUI.cginc" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
 </Project>

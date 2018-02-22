@@ -1,34 +1,45 @@
-﻿//======================================================================
-//        Copyright (C) 2015-2020 Winddy He. All rights reserved
-//        Email: hgplan@126.com
-//======================================================================
-using Core;
+﻿using Framework.Hotfix;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Object = UnityEngine.Object;
+using UnityWeld.Binding;
 
-namespace Framework.Hotfix
+namespace UnityWeld.Binding.ILRT
 {
-    [UnityWeld.Binding.Binding]
-    public class HotfixMBContainer : MonoBehaviour
+    public class ILRTWeldContainer : MonoBehaviour, IViewModelProvider
     {
+        private object          mViewModel          = null;
         [HideInInspector][SerializeField]
-        protected string                    mHotfixName;
+        private string          mViewModelTypeName  = string.Empty;
+
+        private HotfixObject    mMBHotfixObj;
+        public  HotfixObject    MBHotfixObject      { get { return this.mMBHotfixObj; } }
+
         [HideInInspector][SerializeField]
-        protected List<UnityObject>         mObjects;
+        private string          mHotfixName;
+        public  string          HotfixName          { get { return mHotfixName; } set { mHotfixName = value; } }
+
         [HideInInspector][SerializeField]
-        protected bool                      mNeedUpdate;
+        private bool            mNeedUpdate;
+        public bool             NeedUpdate          { get { return mNeedUpdate; } set { mNeedUpdate = value; } }
 
-        private HotfixObject                mMBHotfixObj;
-        public  HotfixObject                MBHotfixObject  { get { return this.mMBHotfixObj;   } }
+        private string          mParentType         = "WindHotfix.Core.THotfixMB`1<{0}>";
 
-        public string                       HotfixName      { get { return mHotfixName;         } set { mHotfixName = value; } }
-        public bool                         NeedUpdate      { get { return mNeedUpdate;         } set { mNeedUpdate = value; } }
-        public List<UnityObject>            Objects         { get { return mObjects;            } }
+        public object GetViewModel()
+        {
+            return this.mViewModel;
+        }
 
-        private string mParentType = "WindHotfix.Core.THotfixMB`1<{0}>";
+        public string GetViewModelTypeName()
+        {
+            return this.mHotfixName;
+        }
+
+        public string ViewModelTypeName
+        {
+            get { return this.mViewModelTypeName;  }
+            set { this.mViewModelTypeName = value; }
+        }
 
         protected virtual void Awake()
         {
@@ -53,12 +64,8 @@ namespace Framework.Hotfix
         {
             if (mMBHotfixObj != null)
                 mMBHotfixObj.InvokeParent(this.mParentType, "OnDestroy_Proxy");
-
-            if (mObjects != null)
-                mObjects.Clear();
-
+            
             mMBHotfixObj = null;
-            mObjects = null;
         }
 
         protected virtual void OnEnable()
@@ -79,7 +86,7 @@ namespace Framework.Hotfix
             {
                 this.mParentType = string.Format(this.mParentType, this.mHotfixName);
                 this.mMBHotfixObj = HotfixManager.Instance.Instantiate(this.mHotfixName);
-                this.mMBHotfixObj.InvokeParent(this.mParentType, "Awake_Proxy", this.gameObject, this.mObjects);
+                this.mMBHotfixObj.InvokeParent(this.mParentType, "Awake_Proxy", this.gameObject);
             }
         }
 
