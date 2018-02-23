@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class WeldTest1 : MonoBehaviour
+public class WeldTest : MonoBehaviour
 {
     void Awake()
     {

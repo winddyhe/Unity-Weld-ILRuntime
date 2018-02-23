@@ -122,9 +122,9 @@ GameObject:
   m_Component:
   - component: {fileID: 52356433}
   - component: {fileID: 52356432}
-  - component: {fileID: 52356431}
   - component: {fileID: 52356430}
   - component: {fileID: 52356429}
+  - component: {fileID: 52356431}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -146,13 +146,17 @@ Behaviour:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 52356428}
   m_Enabled: 1
---- !u!92 &52356431
-Behaviour:
+--- !u!114 &52356431
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 52356428}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7e2e6d3c09d4046a7538b7efd38f8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!20 &52356432
 Camera:
   m_ObjectHideFlags: 0
@@ -313,7 +317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   viewAdapterTypeName: 
   viewAdapterOptions: {fileID: 0}
-  viewModelPropertyName: TwoWayExample.MyViewModel2.Text
+  viewModelPropertyName: Game.Knight.Test.UnityWeldTestCase2.Text
   viewPropertyName: UnityEngine.UI.Text.text
 --- !u!114 &564910992
 MonoBehaviour:
@@ -446,9 +450,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 964187563}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a870d5abd9f9bce4089cd3c7af117793, type: 3}
+  m_Script: {fileID: 11500000, guid: 20351adb1e3158e4abbb09c3806321cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mHotfixName: Game.Knight.Test.UnityWeldTestCase2
+  mObjects: []
+  mNeedUpdate: 0
 --- !u!114 &964187566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -576,7 +583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c08bfd24575e5a944a088aee15afff05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewModelPropertyName: TwoWayExample.MyViewModel2.Text
+  viewModelPropertyName: Game.Knight.Test.UnityWeldTestCase2.Text
   viewEventName: UnityEngine.UI.InputField.onValueChanged
   viewPropertyName: UnityEngine.UI.InputField.text
   viewAdapterTypeName: 

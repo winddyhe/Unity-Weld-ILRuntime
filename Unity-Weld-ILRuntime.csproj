@@ -440,9 +440,7 @@
     <Compile Include="Assets\Generate\SerializerBinary\Runtime\CommonSerializer.cs" />
     <Compile Include="Assets\Generate\SerializerBinary\Runtime\UnityEngine.AssetBundles.ABVersion.Binary.cs" />
     <Compile Include="Assets\Generate\SerializerBinary\Runtime\UnityEngine.AssetBundles.ABVersionEntry.Binary.cs" />
-    <Compile Include="Assets\Test\UnityWeldILRuntime\1_One_way_property_binding_to_a_text_field\MyViewModel1.cs" />
-    <Compile Include="Assets\Test\UnityWeldILRuntime\1_One_way_property_binding_to_a_text_field\WeldTest1.cs" />
-    <Compile Include="Assets\Test\UnityWeldILRuntime\2_Two_way_property_binding_to_an_input_field\MyViewModel2.cs" />
+    <Compile Include="Assets\Test\UnityWeldILRuntime\WeldTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Framework\Graphics\Shaders\Diffuse\ColorBlend.cginc" />
