@@ -208,7 +208,7 @@ namespace UnityWeld.Binding.Internal
                         {
                             continue;
                         }
-                        Type viewModelType = GetViewModelType(viewModelTypeName);
+                        Type viewModelType = GetViewModelType_Hotfix(viewModelTypeName);
                         if (viewModelType == null)
                         {
                             continue;
