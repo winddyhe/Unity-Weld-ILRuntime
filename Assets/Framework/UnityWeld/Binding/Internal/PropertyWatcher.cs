@@ -64,19 +64,27 @@ namespace UnityWeld.Binding.Internal
                 return;
             }
 
-            if (disposing && propertyOwner != null)
+            if (!this.isHotfix)
             {
-                var notifyPropertyChanged = propertyOwner as INotifyPropertyChanged;
-                if (notifyPropertyChanged != null)
+                if (disposing && propertyOwner != null)
                 {
-                    var rHotfixObject = this.propertyOwner as Framework.Hotfix.HotfixObject;
+                    var notifyPropertyChanged = propertyOwner as INotifyPropertyChanged;
+                    if (notifyPropertyChanged != null)
+                    {
+                        notifyPropertyChanged.PropertyChanged -= propertyOwner_PropertyChanged;
+                    }
+                    propertyOwner = null;
+                }
+            }
+            else
+            {
+                var rHotfixObject = this.propertyOwner as Framework.Hotfix.HotfixObject;
+                if (rHotfixObject != null)
+                {
                     var rParentType = string.Format("WindHotfix.Core.THotfixMB`1<{0}>", rHotfixObject.TypeName);
                     rHotfixObject.InvokeParent(rParentType, "RemovePropertyNotify", new Action<object, PropertyChangedEventArgs>(propertyOwner_PropertyChanged));
                 }
-
-                propertyOwner = null;
             }
-
             disposed = true;
         }
 
