@@ -5,6 +5,7 @@
 using Framework.Hotfix;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Reflection;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -13,11 +14,12 @@ namespace WindHotfix.Core
 {
     public class THotfixMB<T> where T : class
     {
-        public GameObject                   GameObject;
-        public List<UnityObject>            Objects;
+        public GameObject                               GameObject;
+        public List<UnityObject>                        Objects;
+        public Action<object, PropertyChangedEventArgs> PropertyChanged;
 
-        protected List<HotfixEventObject>   mEventObjs;
-
+        protected List<HotfixEventObject>               mEventObjs;
+        
         public void Awake_Proxy(GameObject rGo, List<UnityObject> rObjs)
         {
             this.GameObject = rGo;
@@ -68,6 +70,16 @@ namespace WindHotfix.Core
         public void OnDisable_Proxy()
         {
             this.OnDisable();
+        }
+
+        public void AddPropertyNotify(Action<object, PropertyChangedEventArgs> rPropertyNotify)
+        {
+            this.PropertyChanged += rPropertyNotify;
+        }
+
+        public void RemovePropertyNotify(Action<object, PropertyChangedEventArgs> rPropertyNotify)
+        {
+            this.PropertyChanged -= rPropertyNotify;
         }
         
         public virtual void Awake()

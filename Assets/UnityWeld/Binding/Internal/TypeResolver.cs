@@ -151,6 +151,14 @@ namespace UnityWeld.Binding.Internal
             return type;
         }
 
+        private static Type GetViewModelType_Hotfix(string viewModelTypeName)
+        {
+            string rHotfixDllPath = "Assets/Game/Knight/GameAsset/Hotfix/Libs/KnightHotfixModule.bytes";
+            var rDLLBytes = System.IO.File.ReadAllBytes(rHotfixDllPath);
+            Assembly rHotfixAssembly = Assembly.Load(rDLLBytes);
+            return rHotfixAssembly.GetType(viewModelTypeName);
+        }
+
         /// <summary>
         /// Scan up the hierarchy and find all the types that can be bound to 
         /// a specified MemberBinding.
@@ -185,6 +193,28 @@ namespace UnityWeld.Binding.Internal
                         foundAtLeastOneBinding = true;
 
                         yield return GetViewModelType(viewModelBinding.GetViewModelTypeName());
+                    }
+                    else if (component.GetType().FullName.Equals("Framework.Hotfix.HotfixMBContainer"))
+                    {
+                        // Case where a ViewModelBinding is used to bind hotfix class
+                        var prop = component.GetType().GetProperty("HotfixName", BindingFlags.GetProperty | BindingFlags.Instance | BindingFlags.Public);
+                        if (prop == null)
+                        {
+                            continue;
+                        }
+
+                        string viewModelTypeName = (string)prop.GetValue(component);
+                        if (string.IsNullOrEmpty(viewModelTypeName))
+                        {
+                            continue;
+                        }
+                        Type viewModelType = GetViewModelType(viewModelTypeName);
+                        if (viewModelType == null)
+                        {
+                            continue;
+                        }
+                        foundAtLeastOneBinding = true;
+                        yield return viewModelType;
                     }
                     else if (component.GetType().GetCustomAttributes(typeof(BindingAttribute), false).Any())
                     {

@@ -28,6 +28,10 @@ namespace UnityWeld.Binding.Internal
         /// Adapter for converting values that are set on the property.
         /// </summary>
         private readonly IAdapter adapter;
+        /// <summary>
+        /// Is a hotfix property
+        /// </summary>
+        private readonly bool isHotfix;
 
         /// <summary>
         /// Options for using the adapter to convert values.
@@ -48,11 +52,19 @@ namespace UnityWeld.Binding.Internal
             }
 
             this.propertyName = propertyName;
-            this.property = type.GetProperty(propertyName);
 
-            if (this.property == null)
+            if (type.FullName == "Framework.Hotfix.HotfixObject")
             {
-                Debug.LogError("Property '" + propertyName + "' not found on " + endPointType  + " '" + type + "'.", context);
+                this.isHotfix = true;
+            }
+            else
+            {
+                this.isHotfix = false;
+                this.property = type.GetProperty(propertyName);
+                if (this.property == null)
+                {
+                    Debug.LogError("Property '" + propertyName + "' not found on " + endPointType + " '" + type + "'.", context);
+                }
             }
         }
 
@@ -61,7 +73,10 @@ namespace UnityWeld.Binding.Internal
         /// </summary>
         public object GetValue()
         {
-            return property != null ? property.GetValue(propertyOwner, null) : null;
+            if (!this.isHotfix)
+                return property != null ? property.GetValue(propertyOwner, null) : null;
+            else
+                return (this.propertyOwner as Framework.Hotfix.HotfixObject).Invoke("get_" + propertyName);
         }
 
         /// <summary>
@@ -69,22 +84,27 @@ namespace UnityWeld.Binding.Internal
         /// </summary>
         public void SetValue(object input)
         {
-            if (property == null)
+            if (!this.isHotfix)
             {
-                return;
+                if (property == null)
+                {
+                    return;
+                }
+                if (adapter != null)
+                {
+                    input = adapter.Convert(input, adapterOptions);
+                }
+                property.SetValue(propertyOwner, input, null);
             }
-
-            if (adapter != null)
+            else
             {
-                input = adapter.Convert(input, adapterOptions);
+                (this.propertyOwner as Framework.Hotfix.HotfixObject).Invoke("set_"+propertyName, input);
             }
-
-            property.SetValue(propertyOwner, input, null);
         }
 
         public override string ToString()
         {
-            if (property == null)
+            if (!this.isHotfix && property == null)
             {
                 return "!! property not found !!";
             }

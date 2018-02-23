@@ -142,6 +142,7 @@ namespace Framework.Hotfix
                            act)(x, y);
                 });
             });
+            this.mApp.DelegateManager.RegisterMethodDelegate<object, System.ComponentModel.PropertyChangedEventArgs>();
         }
 
         public override HotfixObject Instantiate(string rTypeName, params object[] rArgs)

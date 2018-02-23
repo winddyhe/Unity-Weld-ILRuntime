@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Reflection;
 using UnityEngine;
 using UnityWeld.Binding.Exceptions;
 using UnityWeld.Binding.Internal;
@@ -32,6 +33,24 @@ namespace UnityWeld.Binding
             while (trans != null)
             {
                 var components = trans.GetComponents<MonoBehaviour>();
+
+                var hotfixMBViewModel = components
+                    .FirstOrDefault((component) =>
+                    {
+                        if (!component.GetType().FullName.Equals("Framework.Hotfix.HotfixMBContainer")) return false;
+
+                        var prop = component.GetType().GetProperty("HotfixName", BindingFlags.GetProperty | BindingFlags.Instance | BindingFlags.Public);
+                        if (prop == null) return false;
+
+                        string viewModelTypeName = (string)prop.GetValue(component);
+                        return viewModelName == viewModelTypeName;
+                    });
+                if (hotfixMBViewModel != null)
+                {
+                    var hotfixMBC = hotfixMBViewModel as Framework.Hotfix.HotfixMBContainer;
+                    return hotfixMBC.MBHotfixObject;
+                }
+
                 var monoBehaviourViewModel = components
                     .FirstOrDefault(component => component.GetType().ToString() == viewModelName);
                 if (monoBehaviourViewModel != null)
@@ -53,7 +72,6 @@ namespace UnityWeld.Binding
                 {
                     return providedViewModel.GetViewModel();
                 }
-
                 trans = trans.parent;
             }
 

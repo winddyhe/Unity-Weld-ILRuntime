@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 52356431}
   - component: {fileID: 52356430}
   - component: {fileID: 52356429}
+  - component: {fileID: 52356434}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -202,6 +203,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &52356434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 52356428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7e2e6d3c09d4046a7538b7efd38f8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &346771732
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,7 +287,6 @@ GameObject:
   - component: {fileID: 564910993}
   - component: {fileID: 564910992}
   - component: {fileID: 564910991}
-  - component: {fileID: 564910994}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -314,7 +325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   viewAdapterTypeName: 
   viewAdapterOptions: {fileID: 0}
-  viewModelPropertyName: MyViewModel1.Text
+  viewModelPropertyName: Game.Knight.Test.UnityWeldTestCase1.Text
   viewPropertyName: UnityEngine.UI.Text.text
 --- !u!114 &564910992
 MonoBehaviour:
@@ -355,19 +366,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 564910989}
---- !u!114 &564910994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 564910989}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 410f721b4c0c8424ca0a4860a518fa8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  viewModelTypeName: 
-  viewModelPropertyName: 
 --- !u!1 &963770861
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,6 +444,7 @@ GameObject:
   - component: {fileID: 964187566}
   - component: {fileID: 964187564}
   - component: {fileID: 964187565}
+  - component: {fileID: 964187570}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -472,13 +471,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 964187563}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20351adb1e3158e4abbb09c3806321cf, type: 3}
+  m_Script: {fileID: 11500000, guid: 58b64bfc5a127cf4eb1631970763dcc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: 
-  mHotfixName: Game.Knight.Test.UnityWeld.UnityWeldTestCase1
-  mObjects: []
-  mNeedUpdate: 0
 --- !u!114 &964187566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -555,3 +550,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &964187570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 964187563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20351adb1e3158e4abbb09c3806321cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: 
+  mHotfixName: Game.Knight.Test.UnityWeldTestCase1
+  mObjects: []
+  mNeedUpdate: 1

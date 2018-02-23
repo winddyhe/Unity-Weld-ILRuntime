@@ -22,6 +22,10 @@ namespace UnityWeld.Binding.Internal
         /// The action to invoke when the property has changed.
         /// </summary>
         private readonly Action action;
+        /// <summary>
+        /// Is a hotfix property
+        /// </summary>
+        private readonly bool isHotfix;
 
         private bool disposed;
 
@@ -30,11 +34,20 @@ namespace UnityWeld.Binding.Internal
             this.propertyOwner = propertyOwner;
             this.propertyName = propertyName;
             this.action = action;
-
+            
             var notifyPropertyChanged = propertyOwner as INotifyPropertyChanged;
             if (notifyPropertyChanged != null)
             {
                 notifyPropertyChanged.PropertyChanged += propertyOwner_PropertyChanged;
+            }
+
+            this.isHotfix = false;
+            if (this.propertyOwner.GetType().FullName == "Framework.Hotfix.HotfixObject")
+            {
+                this.isHotfix = true;
+                var rHotfixObject = this.propertyOwner as Framework.Hotfix.HotfixObject;
+                var rParentType = string.Format("WindHotfix.Core.THotfixMB`1<{0}>", rHotfixObject.TypeName);
+                rHotfixObject.InvokeParent(rParentType, "AddPropertyNotify", new Action<object, PropertyChangedEventArgs>(propertyOwner_PropertyChanged));
             }
         }
 
@@ -56,7 +69,9 @@ namespace UnityWeld.Binding.Internal
                 var notifyPropertyChanged = propertyOwner as INotifyPropertyChanged;
                 if (notifyPropertyChanged != null)
                 {
-                    notifyPropertyChanged.PropertyChanged -= propertyOwner_PropertyChanged;
+                    var rHotfixObject = this.propertyOwner as Framework.Hotfix.HotfixObject;
+                    var rParentType = string.Format("WindHotfix.Core.THotfixMB`1<{0}>", rHotfixObject.TypeName);
+                    rHotfixObject.InvokeParent(rParentType, "RemovePropertyNotify", new Action<object, PropertyChangedEventArgs>(propertyOwner_PropertyChanged));
                 }
 
                 propertyOwner = null;
