@@ -49,15 +49,25 @@ namespace UnityWeld.Binding
                 out methodName, 
                 out viewModel
             );
-            var viewModelMethod = viewModel.GetType().GetMethod(methodName, new Type[0]);
 
             string eventName;
             Component view;
             ParseViewEndPointReference(viewEventName, out eventName, out view);
 
-            eventWatcher = new UnityEventWatcher(view, eventName, 
-                () => viewModelMethod.Invoke(viewModel, new object[0])
-            );
+            if (viewModel.GetType() == typeof(Framework.Hotfix.HotfixObject))
+            {
+                var hotfixObj = viewModel as Framework.Hotfix.HotfixObject;
+                eventWatcher = new UnityEventWatcher(view, eventName, 
+                    () => hotfixObj.Invoke(methodName)
+                );
+            }
+            else
+            {
+                var viewModelMethod = viewModel.GetType().GetMethod(methodName, new Type[0]);
+                eventWatcher = new UnityEventWatcher(view, eventName,
+                    () => viewModelMethod.Invoke(viewModel, new object[0])
+                );
+            }
         }
 
         public override void Disconnect()
