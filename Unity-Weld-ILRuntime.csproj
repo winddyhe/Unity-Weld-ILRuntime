@@ -440,6 +440,9 @@
     <Compile Include="Assets\Generate\SerializerBinary\Runtime\CommonSerializer.cs" />
     <Compile Include="Assets\Generate\SerializerBinary\Runtime\UnityEngine.AssetBundles.ABVersion.Binary.cs" />
     <Compile Include="Assets\Generate\SerializerBinary\Runtime\UnityEngine.AssetBundles.ABVersionEntry.Binary.cs" />
+    <Compile Include="Assets\Test\UnityWeldILRuntime\5_Validation\ColorValidationAdapter.cs" />
+    <Compile Include="Assets\Test\UnityWeldILRuntime\5_Validation\ColorValidationAdapterOptions.cs" />
+    <Compile Include="Assets\Test\UnityWeldILRuntime\5_Validation\ExceptionValidationAdapter.cs" />
     <Compile Include="Assets\Test\UnityWeldILRuntime\WeldTest.cs" />
   </ItemGroup>
   <ItemGroup>

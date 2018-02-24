@@ -155,12 +155,12 @@ namespace UnityWeld_Editor
                         return string.IsNullOrEmpty(curPropertyValue);
                     }
                     
-                    return option.ToString() == curPropertyValue;
+                    return option.Property.ToString() == curPropertyValue;
                 },
                 option => UpdateProperty(
                     propertyValueSetter,
                     curPropertyValue,
-                    option.Property == null ? string.Empty : option.ToString(),
+                    option.Property == null ? string.Empty : option.Property.ToString(),
                     "Set view-model property"
                 ),
                 new[] { noneOption }

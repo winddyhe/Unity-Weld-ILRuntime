@@ -76,7 +76,12 @@ namespace UnityWeld.Binding.Internal
             if (!this.isHotfix)
                 return property != null ? property.GetValue(propertyOwner, null) : null;
             else
-                return (this.propertyOwner as Framework.Hotfix.HotfixObject).Invoke("get_" + propertyName);
+            {
+                var hotfixObj = this.propertyOwner as Framework.Hotfix.HotfixObject;
+                object result = hotfixObj.Invoke("get_" + propertyName);
+                Debug.LogError("Getvalue: " + result);
+                return result;
+            }
         }
 
         /// <summary>
@@ -109,7 +114,10 @@ namespace UnityWeld.Binding.Internal
                 return "!! property not found !!";
             }
 
-            return string.Concat(propertyOwner.GetType(), ".", property.Name, " (", property.PropertyType.Name, ")");
+            if (!this.isHotfix)
+                return string.Concat(propertyOwner.GetType(), ".", property.Name, " (", property.PropertyType.Name, ")");
+            else
+                return string.Concat((this.propertyOwner as Framework.Hotfix.HotfixObject).TypeName, ".", propertyName);
         }
 
         /// <summary>
