@@ -57,11 +57,6 @@ namespace Game.Knight.Test
             }
         }
 
-        public override void Awake()
-        {
-            base.Awake();
-        }
-
         public override void Start()
         {
             rotatingCube.transform.localEulerAngles = new Vector3(0f, sliderValue, 0f);

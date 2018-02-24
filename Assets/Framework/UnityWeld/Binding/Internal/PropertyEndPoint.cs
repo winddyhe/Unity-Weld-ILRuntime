@@ -79,7 +79,6 @@ namespace UnityWeld.Binding.Internal
             {
                 var hotfixObj = this.propertyOwner as Framework.Hotfix.HotfixObject;
                 object result = hotfixObj.Invoke("get_" + propertyName);
-                Debug.LogError("Getvalue: " + result);
                 return result;
             }
         }
