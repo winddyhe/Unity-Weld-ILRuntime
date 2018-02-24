@@ -263,6 +263,7 @@
     <Compile Include="Test\UnityWeld\UnityWeldTestCase1.cs" />
     <Compile Include="Test\UnityWeld\UnityWeldTestCase2.cs" />
     <Compile Include="Test\UnityWeld\UnityWeldTestCase3.cs" />
+    <Compile Include="Test\UnityWeld\UnityWeldTestCase4.cs" />
     <Compile Include="WindHotfix\Core\Assist\HotfixBinding.cs" />
     <Compile Include="WindHotfix\Core\Assist\HotfixTypeExpand.cs" />
     <Compile Include="WindHotfix\Core\Serializer\HotfixSerializer.Assists.cs" />
