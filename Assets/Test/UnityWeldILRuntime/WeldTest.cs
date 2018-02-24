@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class WeldTest : MonoBehaviour
 {
-    public HotfixMBContainer MBC;
+    //public HotfixMBContainer MBC;
 
     void Awake()
     {
@@ -31,7 +31,7 @@ public class WeldTest : MonoBehaviour
     void Start()
     {
         //yield return new WaitForSeconds(2.0f);
-        bool isValid = (bool)this.MBC.MBHotfixObject.Invoke("get_IsValid");
-        Debug.LogError("WeldTest: " + isValid);
+        //bool isValid = (bool)this.MBC.MBHotfixObject.Invoke("get_IsValid");
+        //Debug.LogError("WeldTest: " + isValid);
     }
 }
