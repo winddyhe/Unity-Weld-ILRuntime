@@ -102,6 +102,10 @@ namespace UnityWeld.Binding.Internal
             }
             else
             {
+                if (adapter != null)
+                {
+                    input = adapter.Convert(input, adapterOptions);
+                }
                 (this.propertyOwner as Framework.Hotfix.HotfixObject).Invoke("set_"+propertyName, input);
             }
         }
