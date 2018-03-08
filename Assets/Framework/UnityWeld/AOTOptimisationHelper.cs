@@ -5,8 +5,6 @@ using UnityWeld.Binding.Internal;
 // ReSharper disable UnusedMember.Local
 // ReSharper disable UnusedVariable
 
-#pragma warning disable 219 // Disable warning that variable is never used
-
 namespace UnityWeld
 {
     /// <summary>
@@ -50,5 +48,3 @@ namespace UnityWeld
         }
     }
 }
-
-#pragma warning restore 219
