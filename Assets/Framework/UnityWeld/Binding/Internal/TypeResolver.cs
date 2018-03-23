@@ -14,6 +14,7 @@ namespace UnityWeld.Binding.Internal
     public static partial class TypeResolver
     {
         private static Type[] typesWithBindingAttribute;
+        private static Type[] typesWithBindingAttribute_Hotfix;
 
         public static IEnumerable<Type> TypesWithBindingAttribute
         {
@@ -25,6 +26,19 @@ namespace UnityWeld.Binding.Internal
                 }
 
                 return typesWithBindingAttribute;
+            }
+        }
+
+        public static IEnumerable<Type> TypesWithBindingAttribute_Hotfix
+        {
+            get
+            {
+                if (typesWithBindingAttribute_Hotfix == null)
+                {
+                    typesWithBindingAttribute_Hotfix = FindTypesMarkedByAttribute_Hotfix(typeof(BindingAttribute));
+                }
+
+                return typesWithBindingAttribute_Hotfix;
             }
         }
 
@@ -51,6 +65,28 @@ namespace UnityWeld.Binding.Internal
             var typesFound = new List<Type>();
 
             foreach (var type in GetAllTypes())
+            {
+                try
+                {
+                    if (type.GetCustomAttributes(attributeType, false).Any())
+                    {
+                        typesFound.Add(type);
+                    }
+                }
+                catch (Exception)
+                {
+                    // Some types throw an exception when we try to use reflection on them.
+                }
+            }
+
+            return typesFound.ToArray();
+        }
+
+        private static Type[] FindTypesMarkedByAttribute_Hotfix(Type attributeType)
+        {
+            var typesFound = new List<Type>();
+
+            foreach (var type in GetAllTypes_Hotfix())
             {
                 try
                 {
@@ -101,6 +137,14 @@ namespace UnityWeld.Binding.Internal
             }
         }
 
+        private static IEnumerable<Type> GetAllTypes_Hotfix()
+        {
+            string rHotfixDllPath = "Assets/Game/Knight/GameAsset/Hotfix/Libs/KnightHotfixModule.bytes";
+            var rDLLBytes = System.IO.File.ReadAllBytes(rHotfixDllPath);
+            Assembly rHotfixAssembly = Assembly.Load(rDLLBytes);
+            return rHotfixAssembly.GetTypes();
+        }
+
         /// <summary>
         /// Find a particular type by its short name.
         /// </summary>
@@ -143,10 +187,10 @@ namespace UnityWeld.Binding.Internal
             var type = TypesWithBindingAttribute
                 .FirstOrDefault(t => t.ToString() == viewModelTypeName);
 
-            if (type == null)
-            {
-                throw new ViewModelNotFoundException("Could not find the specified view model \"" + viewModelTypeName + "\"");
-            }
+            //if (type == null)
+            //{
+            //    throw new ViewModelNotFoundException("Could not find the specified view model \"" + viewModelTypeName + "\"");
+            //}
 
             return type;
         }
@@ -190,9 +234,18 @@ namespace UnityWeld.Binding.Internal
                             continue;
                         }
 
-                        foundAtLeastOneBinding = true;
+                        var viewModelType = GetViewModelType(viewModelBinding.GetViewModelTypeName());
+                        if (viewModelType == null)
+                        {
+                            viewModelType = GetViewModelType_Hotfix(viewModelBinding.GetViewModelTypeName());
+                        }
 
-                        yield return GetViewModelType(viewModelBinding.GetViewModelTypeName());
+                        if (viewModelType == null)
+                        {
+                            continue;
+                        }
+                        foundAtLeastOneBinding = true;
+                        yield return viewModelType;
                     }
                     else if (component.GetType().FullName.Equals("Framework.Hotfix.HotfixMBContainer"))
                     {

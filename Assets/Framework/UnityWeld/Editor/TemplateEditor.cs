@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
@@ -35,13 +36,16 @@ namespace UnityWeld_Editor
 
             UpdatePrefabModifiedProperties();
 
-            var availableViewModels = TypeResolver.TypesWithBindingAttribute
+            List<string> availableViewModels = new List<string>(TypeResolver.TypesWithBindingAttribute
                 .Select(type => type.ToString())
-                .OrderBy(name => name)
-                .ToArray();
+                .OrderBy(name => name));
 
+            availableViewModels.AddRange(TypeResolver.TypesWithBindingAttribute_Hotfix
+                .Select(type => type.ToString())
+                .OrderBy(name => name));
+            
             var selectedIndex = Array.IndexOf(
-                availableViewModels, 
+                availableViewModels.ToArray(), 
                 targetScript.ViewModelTypeName
             );
 
